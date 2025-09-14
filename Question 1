@@ -1,0 +1,105 @@
+#include <iostream>
+using namespace std;
+#define max 10
+class queue{
+int n=max;
+int front=-1,rear=-1;
+int arr[max];
+public:
+void get(){
+    cout<<"front is "<<front<<" and rear is "<<rear<<endl;
+}
+bool isfull(){
+    if(rear==n-1){
+        
+        return true;
+    }
+    else {
+        return false;
+
+    }
+}
+
+bool isempty(){
+    if(front== -1){
+        
+        return true;
+    }
+    else {
+        return false;
+
+    }
+}
+void enqueue(int x){
+    if(isfull()){
+        cout<<"Queue overflow"<<endl;
+    }
+    else{
+        if(rear==-1){
+            front=0;
+            rear=0;
+            arr[front]=x;
+
+        }
+        else{
+            rear+=1;
+            arr[rear]=x;
+        }
+    }
+    
+}
+void dequeue(){
+    if(isempty()){
+        cout<<"Queue underflow"<<endl;
+    }
+    else{
+        if(front==rear){
+            cout<<"Queue is empty"<<endl;
+            front=-1;
+            rear=-1;
+        }
+        else{
+            front++;
+        }
+    }
+
+}
+
+void display(){
+    for(int i=front;i<=rear;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+void frontpeek(){
+    if(front==-1){
+        cout<<"Queue is empty"<<endl;
+    }
+    else{
+    cout<<arr[front]<<endl;}
+}
+void rearpeek(){
+    if(rear==-1){
+        cout<<"Queue is empty"<<endl;
+    }
+    else{
+    cout<<arr[rear]<<endl;}
+}
+};
+int main(){
+    queue b;
+    b.enqueue(10);
+    b.enqueue(20);
+    b.frontpeek();
+    b.rearpeek();
+   
+    b.dequeue();
+    b.dequeue();
+    b.enqueue(30);
+    b.enqueue(40);
+    b.frontpeek();
+    b.rearpeek();
+    
+    b.display();
+
+}
