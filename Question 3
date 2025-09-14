@@ -1,0 +1,39 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+queue<int> interleave(queue <int> a){
+    queue <int> b;
+    int n=a.size();
+    for(int i=0;i<n/2;i++){
+        b.push(a.front());
+        a.pop();
+    }
+    for(int j=0;j<n;j++){
+        if(j%2==0){
+            a.push(b.front());
+            b.pop();
+        }
+        if(j%2!=0){
+            a.push(a.front());
+            a.pop();
+        }
+    }
+    return a;
+}
+int main(){
+    queue <int> a;
+    
+    a.push(4);
+    a.push(7);
+    a.push(11);
+    a.push(20);
+    a.push(5);
+    a.push(9);
+    int n=a.size();
+   a= interleave(a);
+    for (int i=0;i<n;i++){
+        cout<<a.front()<<" ";
+        a.pop();
+    }
+
+}
